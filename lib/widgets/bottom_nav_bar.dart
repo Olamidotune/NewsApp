@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/screens/discover_screen.dart';
 import 'package:news/screens/home_screen.dart';
+import 'package:news/screens/new.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int index;
@@ -21,7 +22,9 @@ class BottomNavBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: IconButton(
-            onPressed: () => Navigator.of(context).pushNamed(HomeScreen.routeName),
+            onPressed: () {
+              Navigator.of(context).popAndPushNamed(HomeScreen.routeName);
+            },
             icon: const Icon(
               Icons.home,
               color: Colors.black,
@@ -31,7 +34,9 @@ class BottomNavBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
             icon: IconButton(
-           onPressed: () => Navigator.of(context).pushNamed(DiscoverScreen.routeName),
+              onPressed: () {
+                Navigator.of(context).popAndPushNamed(DiscoverScreen.routeName);
+              },
               icon: const Icon(
                 Icons.search,
                 color: Colors.black,
@@ -41,7 +46,8 @@ class BottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: IconButton(
             onPressed: () {
-              print('No profile Screen');
+              // print('No profile Screen');
+              Navigator.popAndPushNamed(context, NewPage.routeName);
             },
             icon: const Icon(
               Icons.person,

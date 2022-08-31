@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/models/articles_model.dart';
+import 'package:news/screens/article_screen.dart';
 import 'package:news/widgets/bottom_nav_bar.dart';
 import 'package:news/widgets/custom_tag.dart';
 import 'package:news/widgets/image_container.dart';
@@ -63,17 +64,18 @@ class _BreakingNews extends StatelessWidget {
               Text(
                 'Breaking News',
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: Colors.black,
-                      height: 0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    color: Colors.black,
+                    height: 0,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 7.sp),
               ),
               TextButton(
                 child: Text(
                   'More',
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Colors.black,
-                      ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.copyWith(color: Colors.black, fontSize: 5.sp),
                 ),
                 onPressed: () {},
               )
@@ -83,41 +85,59 @@ class _BreakingNews extends StatelessWidget {
             height: 2.h,
           ),
           SizedBox(
-            height: 300,
+            height: 80.h,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               itemCount: articles.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
+                  width: MediaQuery.of(context).size.width * .4,
                   margin: const EdgeInsets.only(right: 10),
-                  child: Column(
-                    children: [
-                      ImageContainer(
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          imageUrl: articles[index].urltoImage),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Column(mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            articles[index].title,
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: Colors.black,
-                                  height: 0,
-                                  fontWeight: FontWeight.bold,
-                                  // fontSize: 20.sp,
-                                ),
-                            textAlign: TextAlign.end,
+                  child: InkWell(
+                    highlightColor: Colors.grey,
+                    onTap: () => Navigator.pushNamed(
+                        context, ArticleScreen.routeName,
+                        arguments: articles[index]),
+                    child: Column(
+                      children: [
+                        ImageContainer(
+                          height: 20.h,
+                            width: MediaQuery.of(context).size.width * 0.5.h,
+                            imageUrl: articles[index].urltoImage),
+                        SizedBox(
+                          height: 2.h,
+                        ),
+                        Text(
+                          articles[index].title,
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Colors.black,
+                                    height: 0,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp
+                                  ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(
+                          height: 1.h,
+                        ),
+                        Text(
+                          'by ${articles[index].author}',
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                               fontSize: 7.sp
                           ),
-                        ],
-                      ),
-                    ],
+                          
+                          textAlign: TextAlign.center,
+                          
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );

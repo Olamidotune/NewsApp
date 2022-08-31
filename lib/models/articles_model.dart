@@ -10,17 +10,20 @@ class Article extends Equatable {
   final String urltoImage;
   final DateTime publishedAt;
   final String content;
+  final String category;
 
-  const Article(
-      {required this.id,
-      required this.author,
-      required this.title,
-      required this.name,
-      required this.desription,
-      required this.url,
-      required this.urltoImage,
-      required this.publishedAt,
-      required this.content});
+  const Article({
+    required this.id,
+    required this.author,
+    required this.title,
+    required this.name,
+    required this.desription,
+    required this.url,
+    required this.urltoImage,
+    required this.publishedAt,
+    required this.content,
+    required this.category,
+  });
 
   static List<Article> articles = [
     Article(
@@ -38,9 +41,11 @@ class Article extends Equatable {
           (const Duration(hours: 5)),
         ),
         content:
-            "All computers act up from time to time. When things go awry, my first recommendation is always to simply shut down and reboot: Often, this simple power cycle fixes the issue. However, you might run i… [+3909 chars]",
-        title: "Your Mac Has Secret Reset ' Buttons' "),
+            "All computers act up from time to time. When things go awry, my first recommendation is always to simply shut down and reboot: Often, this simple power cycle fixes the issue.",
+        title: "Your Mac Has Secret Reset ' Buttons' ",
+        category: 'Technology'),
     Article(
+      category: 'Technology',
         id: '2',
         author: "Terrence O'Brien",
         name: "Engadget",
@@ -54,10 +59,11 @@ class Article extends Equatable {
           (const Duration(hours: 5)),
         ),
         content:
-            "If you're a music maker, chances are you've signed up for a music distribution service like DistoKid, maybe you have a subscription to a sample depot like Splice, and even pay monthly for an instrume… [+1756 chars]",
+            "If you're a music maker, chances are you've signed up for a music distribution service like DistoKid, maybe you have a subscription to a sample depot like Splice, and even pay monthly for an instrumeent.",
         title:
             '"LANDR Studio has everything you need to make and release music (except a DAW)",'),
     Article(
+       category: 'Health',
         id: '3',
         author: "Claire Lower",
         title: "Your BLT Needs This Stealth Bacon",
@@ -72,8 +78,9 @@ class Article extends Equatable {
           (const Duration(hours: 5)),
         ),
         content:
-            "A BLT is a pretty perfect sandwich. I dont thing I need to explain why the combination of crispy, salty bacon, crunchy lettuce, creamy mayo, and juicy tomatoes taste good together. Each component has… [+3627 chars]"),
+            "A BLT is a pretty perfect sandwich. I dont thing I need to explain why the combination of crispy, salty bacon, crunchy lettuce, creamy mayo, and juicy tomatoes taste good together."),
     Article(
+       category: 'Technology',
       id: '4',
       author: "Mat Smith",
       title:
@@ -92,19 +99,19 @@ class Article extends Equatable {
       ),
     ),
     Article(
+       category: 'Technology',
       id: '5',
-      author:"Pranay Parab",
-      title:
-         "Enable These Instagram Privacy Settings Right Now",
+      author: "Pranay Parab",
+      title: "Enable These Instagram Privacy Settings Right Now",
       name: "Lifehacker.com",
       desription:
           "Instagram has been through so many changes, it's hard to remember what is truly private on your account and what’s not. ",
       url:
           "https://lifehacker.com/enable-these-instagram-privacy-settings-right-now-1849456072",
       urltoImage:
-         "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/b2db3da824e15fc793b0d9fabe1e0085.jpg",
+          "https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/b2db3da824e15fc793b0d9fabe1e0085.jpg",
       content:
-         "Instagram has been through so many changes, its hard to remember what is truly private on your account and whats not. ",
+          "Instagram has been through so many changes, its hard to remember what is truly private on your account and whats not. ",
       publishedAt: DateTime.now().subtract(
         (const Duration(hours: 5)),
       ),
