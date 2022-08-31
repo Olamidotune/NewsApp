@@ -3,7 +3,6 @@ import 'package:news/models/articles_model.dart';
 import 'package:news/widgets/custom_tag.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/link.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../widgets/image_container.dart';
 
 class ArticleScreen extends StatelessWidget {
@@ -65,7 +64,7 @@ class _ArticleContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height*45.h,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -116,16 +115,17 @@ class _ArticleContainer extends StatelessWidget {
                         ),
                   ),
                 ),
-                Link(
-                  target: LinkTarget.self ,
-                  builder: (context, followLink) => ElevatedButton(
+              
+              ],
+            ),
+              Link(
+                  target: LinkTarget.blank ,
+                  builder: (context, followLink) => TextButton(
                     onPressed:followLink,
-                    child: const Text('Continue Reading.'),
+                    child: const Text('Continue reading'),
                   ), 
                   uri: Uri.parse(article.url),
                 ),
-              ],
-            ),
             const SizedBox(
               height: 10,
             ),

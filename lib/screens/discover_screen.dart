@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/models/articles_model.dart';
 import 'package:news/screens/article_screen.dart';
-
 import 'package:news/widgets/bottom_nav_bar.dart';
 import 'package:news/widgets/image_container.dart';
 import 'package:sizer/sizer.dart';
@@ -36,6 +35,7 @@ class DiscoverScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           padding: EdgeInsets.zero,
           children: [
+          
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
@@ -91,16 +91,14 @@ class _CategoryNews extends StatelessWidget {
             children: tabs
                 .map(
                   (tab) => ListView.builder(
-                    physics: const BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: articles.length,
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, ArticleScreen.routeName,
-                                arguments: articles[index]);
-                          },
+                          onTap: () => Navigator.of(context).pushNamed(
+                              ArticleScreen.routeName,
+                              arguments: articles[index]),
                           child: Row(
                             children: [
                               Padding(

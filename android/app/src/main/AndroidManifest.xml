@@ -13,6 +13,7 @@
         <data android:scheme="tel" />
     </intent>
     </queries>
+   
    <application
         android:label="news"
         android:name="${applicationName}"

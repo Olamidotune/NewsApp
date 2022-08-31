@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         index: 0,
       ),
       body: ListView(
-        physics: const BouncingScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsets.zero,
         children: [
           _NewsOfTheDay(article: article),
@@ -96,13 +96,13 @@ class _BreakingNews extends StatelessWidget {
                   margin: const EdgeInsets.only(right: 10),
                   child: InkWell(
                     highlightColor: Colors.grey,
-                    onTap: () => Navigator.pushNamed(
-                        context, ArticleScreen.routeName,
+                    onTap: () => Navigator.of(context).pushNamed(
+                        ArticleScreen.routeName,
                         arguments: articles[index]),
                     child: Column(
                       children: [
                         ImageContainer(
-                          height: 20.h,
+                            height: 20.h,
                             width: MediaQuery.of(context).size.width * 0.5.h,
                             imageUrl: articles[index].urltoImage),
                         SizedBox(
@@ -110,13 +110,14 @@ class _BreakingNews extends StatelessWidget {
                         ),
                         Text(
                           articles[index].title,
-                          style:
-                              Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    color: Colors.black,
-                                    height: 0,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10.sp
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                  color: Colors.black,
+                                  height: 0,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10.sp),
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(
@@ -124,12 +125,11 @@ class _BreakingNews extends StatelessWidget {
                         ),
                         Text(
                           'by ${articles[index].author}',
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                               fontSize: 7.sp
-                          ),
-                          
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(fontSize: 7.sp),
                           textAlign: TextAlign.center,
-                          
                         ),
                       ],
                     ),

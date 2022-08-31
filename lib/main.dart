@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news/models/articles_model.dart';
+
 import 'package:news/screens/article_screen.dart';
 import 'package:news/screens/discover_screen.dart';
 import 'package:news/screens/home_screen.dart';
-import 'package:news/screens/new.dart';
+
 import 'package:sizer/sizer.dart';
 
 void main() {
@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
           HomeScreen.routeName: (context) => const HomeScreen(),
           DiscoverScreen.routeName: (context) => const DiscoverScreen(),
            ArticleScreen.routeName: (context) =>  const ArticleScreen(),
-           NewPage.routeName:(context) =>  NewPage(),
         },
       ),
     );
